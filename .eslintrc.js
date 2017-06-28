@@ -4,9 +4,12 @@ module.exports = {
         "node": true
     },
     "extends": "eslint:recommended",
+    // "extends": "eslint-config-airbnb",
     "rules": {
         "accessor-pairs": 2,
         "arrow-spacing": [2, { "before": true, "after": true }],
+        "arrow-body-style": [2, "always"],
+        "arrow-parens": [2, "always"],
         "block-spacing": [2, "always"],
         "brace-style": [2, "1tbs", { "allowSingleLine": true }],
         "camelcase": [2, { "properties": "never" }],
@@ -14,7 +17,7 @@ module.exports = {
         "comma-spacing": [2, { "before": false, "after": true }],
         "comma-style": [2, "last"],
         "constructor-super": 2,
-        "curly": [2, "multi-line"],
+        // "curly": [0, "multi-line"],
         "dot-location": [2, "property"],
         "eqeqeq": [2, "allow-null"],
         "func-call-spacing": [2, "never"],
@@ -78,6 +81,7 @@ module.exports = {
         "no-redeclare": 2,
         "no-regex-spaces": 2,
         "no-return-assign": [2, "except-parens"],
+        "no-restricted-modules": 2,
         "no-self-assign": 2,
         "no-self-compare": 2,
         "no-sequences": 2,
@@ -120,15 +124,16 @@ module.exports = {
         "space-infix-ops": 2,
         "space-unary-ops": [2, { "words": true, "nonwords": false }],
         "spaced-comment": [2, "always", {
-        "line": {
-            "markers": ["*package", "!", ",", "noinspection", "region", "endregion"]
-        },
-        "block": {
-            "balanced": true,
-            "markers": ["*package", "!", ","],
-            "exceptions": ["*"]
-        }
+          "line": {
+              "markers": ["*package", "!", ",", "noinspection", "region", "endregion"]
+          },
+          "block": {
+              "balanced": true,
+              "markers": ["*package", "!", ","],
+              "exceptions": ["*"]
+          }
         }],
+        "lines-around-comment": 2,
         "template-curly-spacing": [2, "never"],
         "unicode-bom": [2, "never"],
         "use-isnan": 2,
@@ -137,7 +142,8 @@ module.exports = {
         "yield-star-spacing": [2, "both"],
         "yoda": [2, "never"]
       },
-      "parserOptions": {
-        "sourceType": "module"
-      }
+    "parserOptions": {
+      "sourceType": "module",
+      "ecmaVersion": 6
+    }
 };
