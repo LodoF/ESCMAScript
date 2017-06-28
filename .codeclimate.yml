@@ -1,0 +1,7 @@
+engines:
+  csslint:
+    enabled: true
+
+  ratings:
+    paths:
+      - "**.css"
