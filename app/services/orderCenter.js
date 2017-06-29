@@ -1,32 +1,98 @@
-import { Http } from 'http';
-import {Buffer} from 'buffer';
+import { BasicHttp } from './basicHttp.js';
 
 export class OrderCenter {
 
-  constructor (host, username, password) {
+  constructor (host, port, username, password) {
     this.host = host;
+    this.port = port;
     this.username = username;
     this.password = password;
   }
 
-  submitOrder ({protocol = 'http:', method = 'GET', path = '/', headers = {'Content-Type': 'application/json'}, timeout = 2 * 1000}) {
+  /**
+   * 提交订单
+   * @param {*}
+   */
+  createOrder ({data = ''}) {
     let options = {
-      protocol: protocol,
       host: this.host,
-      method: method,
-      path: path,
-      headers: headers,
-      auth: new Buffer(this.username + ':' + this.password).toString('base64'),
-      timeout: timeout
+      method: 'POST',
+      path: '/custom/entity/commerce_order?_format=json',
+      port: this.port,
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Basic ' +  new Buffer(this.username + ':' + this.password).toString('base64')
+      },
+      data: data
     };
-    Http.request(options, (res) => {
-      res.setEncoding('utf8');
-      res.on('data', (chunk) => {
 
-      });
-      res.on('end', () => {
+    const basicHttp = new BasicHttp();
 
+    let promise = new Promise(function (resolve, reject) {
+      basicHttp.requset(options)
+      .then(function(data) {
+        resolve(data);
+      }, function(err) {
+        reject(err);
       });
     });
+
+    return promise;
+  }
+
+  /**
+   * 更新订单
+   * @param {*}
+   */
+  updateOrder ({id, data = ''}) {
+    let options = {
+      host: this.host,
+      method: 'PATCH',
+      path: '/jsonapi/commerce_order/default/' + id + '?_format=api_json',
+      port: this.port,
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Basic ' +  new Buffer(this.username + ':' + this.password).toString('base64')
+      },
+      data: data
+    };
+
+    const basicHttp = new BasicHttp();
+
+    let promise = new Promise(function (resolve, reject) {
+      basicHttp.requset(options)
+      .then(function(data) {
+        resolve(data);
+      }, function(err) {
+        reject(err);
+      });
+    });
+
+    return promise;
+  }
+
+  /**
+   * 查询订单信息
+   * @param {*}
+   */
+  queryOrder ({id}) {
+    let options = {
+      host: this.host,
+      method: 'GET',
+      path: '/jsonapi/commerce_order/default/' + id + '?_format=api_json',
+      port: this.port
+    };
+
+    const basicHttp = new BasicHttp();
+
+    let promise = new Promise(function (resolve, reject) {
+      basicHttp.requset(options)
+      .then(function(data) {
+        resolve(data);
+      }, function(err) {
+        reject(err);
+      });
+    });
+    return promise;
   }
 }

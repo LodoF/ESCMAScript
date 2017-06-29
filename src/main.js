@@ -1,5 +1,6 @@
 import { app, BrowserWindow, powerSaveBlocker} from 'electron';
 import {Windows} from './window.js';
+import {DataEngine} from '../app/services/dataEngine.js';
 
 let {mainWindow} = {};
 
@@ -42,4 +43,5 @@ function createWindows () {
   mainWindow.on('closed', function () {
     mainWindow = null;
   });
+
 }

@@ -21,7 +21,7 @@ module.exports = {
         "dot-location": [2, "property"],
         "eqeqeq": [2, "allow-null"],
         "func-call-spacing": [2, "never"],
-        "handle-callback-err": [2, "^(err|error)$" ],
+        // "handle-callback-err": [2, "^(err|error)$" ],
         "indent": [2, 2, { "SwitchCase": 1 }],
         "key-spacing": [2, { "beforeColon": false, "afterColon": true, "mode": "minimum" }],
         "keyword-spacing": [2, { "before": true, "after": true }],
