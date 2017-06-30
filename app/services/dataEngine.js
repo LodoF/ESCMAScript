@@ -97,6 +97,35 @@ export class DataEngine {
   }
 
   /**
+   * 获取用户详细信息
+   * @param {*} id 用户id
+   */
+  queryUserDetail ({id}) {
+    let options = {
+      host: this.host,
+      method: 'GET',
+      path: '/user/' + id + '.json',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Basic ' +  new Buffer(this.username + ':' + this.password).toString('base64')
+      },
+      port: this.port
+    };
+
+    const basicHttp = new BasicHttp();
+
+    let promise = new Promise(function (resolve, reject) {
+      basicHttp.requset(options)
+      .then(function(data) {
+        resolve(data);
+      }, function(err) {
+        reject(err);
+      });
+    });
+    return promise;
+  }
+
+  /**
    * 查询商家分类属性
    * @param {String} id 分类id
    */
@@ -217,6 +246,27 @@ export class DataEngine {
    * @param {String} id 文件id
    */
   querFile ({id}) {
+    let options = {
+      host: this.host,
+      method: 'GET',
+      path: '/file/' + id + '.json',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Basic ' +  new Buffer(this.username + ':' + this.password).toString('base64')
+      },
+      port: this.port
+    };
 
+    const basicHttp = new BasicHttp();
+
+    let promise = new Promise(function (resolve, reject) {
+      basicHttp.requset(options)
+      .then(function(data) {
+        resolve(data);
+      }, function(err) {
+        reject(err);
+      });
+    });
+    return promise;
   }
 }

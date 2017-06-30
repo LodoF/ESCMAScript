@@ -11,7 +11,7 @@ export class OrderCenter {
 
   /**
    * 提交订单
-   * @param {*}
+   * @param {String} data 订单body
    */
   createOrder ({data = ''}) {
     let options = {
@@ -42,7 +42,8 @@ export class OrderCenter {
 
   /**
    * 更新订单
-   * @param {*}
+   * @param {String} id  订单id
+   * @param {String} data  更新内容
    */
   updateOrder ({id, data = ''}) {
     let options = {
@@ -73,7 +74,7 @@ export class OrderCenter {
 
   /**
    * 查询订单信息
-   * @param {*}
+   * @param {String} id 订单id
    */
   queryOrder ({id}) {
     let options = {
