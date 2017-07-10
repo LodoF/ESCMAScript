@@ -46,9 +46,10 @@
     "lint": "eslint ./ --fix"
   },
   "dependencies": {
-    "buffer": "^5.0.6",
     "electron-updater": "^2.4.3",
-    "fs-jetpack": "^0.13.3"
+    "fs-jetpack": "^0.13.3",
+    "getmac": "^1.2.1",
+    "pouchdb-browser": "^6.2.0"
   },
   "devDependencies": {
     "7zip-bin": "^2.1.0",
@@ -71,7 +72,7 @@
     "gulp-util": "^3.0.8",
     "gulp-watch": "^4.3.11",
     "istanbul": "^0.4.5",
-    "leveldown": "^1.7.2",
+    "leveldown": "^1.5.0",
     "minimatch": "^3.0.4",
     "minimist": "^1.2.0",
     "mocha": "^3.4.2",
