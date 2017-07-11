@@ -8,25 +8,24 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var macObj = require('getmac');
-
-var Mac = exports.Mac = function () {
-  function Mac() {
-    _classCallCheck(this, Mac);
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-undef */
+var Config = exports.Config = function () {
+  function Config() {
+    _classCallCheck(this, Config);
   }
 
-  _createClass(Mac, [{
-    key: 'getInfo',
-    value: function getInfo() {
-      var promise = new Promise(function (resolve, reject) {
-        macObj.getMac(function (err, macAddress) {
-          if (err) throw err;
-          resolve(macAddress);
-        });
-      });
-      return promise;
+  _createClass(Config, [{
+    key: 'ocUrl',
+    get: function get() {
+      return 'http://newoc.sparkpad-dev.com';
+    }
+  }, {
+    key: 'ocPort',
+    get: function get() {
+      return 5000;
     }
   }]);
 
-  return Mac;
+  return Config;
 }();

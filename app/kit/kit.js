@@ -8,25 +8,38 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var macObj = require('getmac');
-
-var Mac = exports.Mac = function () {
-  function Mac() {
-    _classCallCheck(this, Mac);
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-undef */
+var Kit = exports.Kit = function () {
+  function Kit() {
+    _classCallCheck(this, Kit);
   }
 
-  _createClass(Mac, [{
-    key: 'getInfo',
-    value: function getInfo() {
-      var promise = new Promise(function (resolve, reject) {
-        macObj.getMac(function (err, macAddress) {
-          if (err) throw err;
-          resolve(macAddress);
-        });
-      });
-      return promise;
+  _createClass(Kit, [{
+    key: 'getUUID',
+    value: function getUUID() {
+      var chars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'.split('');
+      var radix = 16;
+      var out = '';
+      var i = -1;
+      while (++i < 36) {
+        switch (i) {
+          case 8:
+          case 13:
+          case 18:
+          case 23:
+            out += '-';
+            break;
+          case 19:
+            out += chars[(0 | Math.random() * radix) & 0x3 | 0x8];
+            break;
+          default:
+            out += chars[0 | Math.random() * radix];
+        }
+      }
+      return out;
     }
   }]);
 
-  return Mac;
+  return Kit;
 }();

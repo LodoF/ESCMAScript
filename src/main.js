@@ -1,6 +1,6 @@
 import { app, BrowserWindow, powerSaveBlocker} from 'electron';
 import { Windows } from './window.js';
-import { _Pouchdb } from '../app/services/_pouchdb.js';
+
 let {mainWindow} = {};
 
 // 阻止程序多开
@@ -42,10 +42,4 @@ function createWindows () {
   mainWindow.on('closed', function () {
     mainWindow = null;
   });
-
-  let pouchdb = new _Pouchdb();
-
-  let db = pouchdb.createDatabase('xfang');
-
-  console.log(db);
 }
